@@ -63,6 +63,12 @@ var seattle = {
       ul.appendChild(item);
     });
 
+    var sumLi = document.createElement('li');
+    var sumText = document.createTextNode('Total: ' + this.totalSales());
+    sumLi.appendChild(sumText);
+    ul.appendChild(sumLi);
+
+
     locationSales.appendChild(ul);
   }
 
@@ -115,6 +121,10 @@ var tokyo = {
       item.appendChild(text);
       ul.appendChild(item);
     });
+    var sumLi = document.createElement('li');
+    var sumText = document.createTextNode('Total: ' + this.totalSales());
+    sumLi.appendChild(sumText);
+    ul.appendChild(sumLi);
 
     locationSales.appendChild(ul);
   }
@@ -167,6 +177,10 @@ var dubai = {
       item.appendChild(text);
       ul.appendChild(item);
     });
+    var sumLi = document.createElement('li');
+    var sumText = document.createTextNode('Total: ' + this.totalSales());
+    sumLi.appendChild(sumText);
+    ul.appendChild(sumLi);
 
     locationSales.appendChild(ul);
   }
@@ -199,7 +213,6 @@ var paris = {
     });
     return sum;
   },
-  
   render: function(){
 
     var listItems = [];
@@ -220,7 +233,10 @@ var paris = {
       item.appendChild(text);
       ul.appendChild(item);
     });
-
+    var sumLi = document.createElement('li');
+    var sumText = document.createTextNode('Total: ' + this.totalSales());
+    sumLi.appendChild(sumText);
+    ul.appendChild(sumLi);
     locationSales.appendChild(ul);
   }
 };
@@ -260,7 +276,7 @@ var lima = {
       listItems.push(element + ': ' + this.genSalesHour() + ' cookies');      
     });
 
-    var locationSales = document.getElementById('locationSales');    
+    var locationSales = document.getElementById('locationSales');
     var ul = document.createElement('ul');
     var h2 = document.createElement('h2');
 
@@ -273,7 +289,10 @@ var lima = {
       item.appendChild(text);
       ul.appendChild(item);
     });
-
+    var sumLi = document.createElement('li');
+    var sumText = document.createTextNode('Total: ' + this.totalSales());
+    sumLi.appendChild(sumText);
+    ul.appendChild(sumLi);
     locationSales.appendChild(ul);
   }
 
