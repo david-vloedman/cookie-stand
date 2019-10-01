@@ -24,7 +24,7 @@ var seattle = {
   salesByHour: [],
 
   custPerHour: function(){
-    var customers = Math.floor(Math.random() * (this.maxCustomer - this.minCustomer + 1) + this.minCustomer);    
+    var customers = Math.floor(Math.random() * (this.maxCustomer - this.minCustomer + 1) + this.minCustomer);
     return customers;
   },
   genSalesHour: function(){
@@ -46,10 +46,10 @@ var seattle = {
 
     var listItems = [];
     hours.forEach(element => {
-      listItems.push(element + ': ' + this.genSalesHour() + ' cookies');      
+      listItems.push(element + ': ' + this.genSalesHour() + ' cookies');
     });
 
-    var locationSales = document.getElementById('locationSales');    
+    var locationSales = document.getElementById('locationSales');
     var ul = document.createElement('ul');
     var h2 = document.createElement('h2');
 
@@ -84,13 +84,13 @@ var tokyo = {
   salesByHour: [],
 
   custPerHour: function(){
-    var customers = Math.floor(Math.random() * (this.maxCustomer - this.minCustomer + 1) + this.minCustomer);    
+    var customers = Math.floor(Math.random() * (this.maxCustomer - this.minCustomer + 1) + this.minCustomer);
     return customers;
   },
   genSalesHour: function(){
     var sales = this.custPerHour() * this.averageCookie;
     sales = Math.floor(sales);
-    this.salesByHour.push(sales);    
+    this.salesByHour.push(sales);
     return sales;
   },
 
@@ -105,10 +105,10 @@ var tokyo = {
 
     var listItems = [];
     hours.forEach(element => {
-      listItems.push(element + ': ' + this.genSalesHour() + ' cookies');      
+      listItems.push(element + ': ' + this.genSalesHour() + ' cookies');
     });
 
-    var locationSales = document.getElementById('locationSales');    
+    var locationSales = document.getElementById('locationSales');
     var ul = document.createElement('ul');
     var h2 = document.createElement('h2');
 
@@ -139,13 +139,13 @@ var dubai = {
   salesByHour: [],
 
   custPerHour: function(){
-    var customers = Math.floor(Math.random() * (this.maxCustomer - this.minCustomer + 1) + this.minCustomer);    
+    var customers = Math.floor(Math.random() * (this.maxCustomer - this.minCustomer + 1) + this.minCustomer);
     return customers;
   },
   genSalesHour: function(){
     var sales = this.custPerHour() * this.averageCookie;
     sales = Math.floor(sales);
-    this.salesByHour.push(sales);    
+    this.salesByHour.push(sales);
     return sales;
   },
 
@@ -161,10 +161,10 @@ var dubai = {
 
     var listItems = [];
     hours.forEach(element => {
-      listItems.push(element + ': ' + this.genSalesHour() + ' cookies');      
+      listItems.push(element + ': ' + this.genSalesHour() + ' cookies');
     });
 
-    var locationSales = document.getElementById('locationSales');    
+    var locationSales = document.getElementById('locationSales');
     var ul = document.createElement('ul');
     var h2 = document.createElement('h2');
 
@@ -196,13 +196,13 @@ var paris = {
   salesByHour: [],
 
   custPerHour: function(){
-    var customers = Math.floor(Math.random() * (this.maxCustomer - this.minCustomer + 1) + this.minCustomer);    
+    var customers = Math.floor(Math.random() * (this.maxCustomer - this.minCustomer + 1) + this.minCustomer);
     return customers;
   },
   genSalesHour: function(){
     var sales = this.custPerHour() * this.averageCookie;
     sales = Math.floor(sales);
-    this.salesByHour.push(sales);    
+    this.salesByHour.push(sales);
     return sales;
   },
 
@@ -217,13 +217,13 @@ var paris = {
 
     var listItems = [];
     hours.forEach(element => {
-      listItems.push(element + ': ' + this.genSalesHour() + ' cookies');      
+      listItems.push(element + ': ' + this.genSalesHour() + ' cookies');
     });
 
-    var locationSales = document.getElementById('locationSales');    
+    var locationSales = document.getElementById('locationSales');
     var ul = document.createElement('ul');
     var h2 = document.createElement('h2');
-    
+
     h2.appendChild(document.createTextNode('Paris'));
     ul.appendChild(h2);
 
@@ -252,7 +252,7 @@ var lima = {
   salesByHour: [],
 
   custPerHour: function(){
-    var customers = Math.floor(Math.random() * (this.maxCustomer - this.minCustomer + 1) + this.minCustomer);    
+    var customers = Math.floor(Math.random() * (this.maxCustomer - this.minCustomer + 1) + this.minCustomer);
     return customers;
   },
   genSalesHour: function(){
@@ -274,7 +274,7 @@ var lima = {
 
     var listItems = [];
     hours.forEach(element => {
-      listItems.push(element + ': ' + this.genSalesHour() + ' cookies');      
+      listItems.push(element + ': ' + this.genSalesHour() + ' cookies');
     });
 
     var locationSales = document.getElementById('locationSales');
@@ -292,7 +292,7 @@ var lima = {
     var sumLi = document.createElement('li');
     sumLi.textContent = 'Total: ' + this.totalSales();
     sumLi.setAttribute('id','sum');
-    
+
     ul.appendChild(sumLi);
     locationSales.appendChild(ul);
   }
