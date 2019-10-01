@@ -1,0 +1,37 @@
+body{
+  background-color: #f7d6ca;
+  color: #575326;
+  font-family: Arial, Helvetica, sans-serif;
+   
+}
+
+main{
+  margin: auto;
+}
+img{
+  display: block;
+  margin: auto;
+}
+
+h2{
+  font-family: 'Yeseva One', cursive;
+  color: rgb(8, 77, 8);
+  text-align: center;
+}
+
+ul{
+  float: left;  
+  margin: auto;
+}
+#sum{
+  font-family: 'Yeseva One', cursive;
+}
+
+li{
+  margin-top: 4px;
+}
+
+section{
+  margin:auto;
+  align-content: center;
+}
