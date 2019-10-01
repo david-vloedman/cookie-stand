@@ -64,8 +64,8 @@ var seattle = {
     });
 
     var sumLi = document.createElement('li');
-    var sumText = document.createTextNode('Total: ' + this.totalSales());
-    sumLi.appendChild(sumText);
+    sumLi.textContent = 'Total: ' + this.totalSales();
+    sumLi.setAttribute('id','sum');
     ul.appendChild(sumLi);
 
 
@@ -74,7 +74,7 @@ var seattle = {
 
 };
 
-seattle.render();
+
 
 
 var tokyo = {
@@ -122,15 +122,15 @@ var tokyo = {
       ul.appendChild(item);
     });
     var sumLi = document.createElement('li');
-    var sumText = document.createTextNode('Total: ' + this.totalSales());
-    sumLi.appendChild(sumText);
+    sumLi.textContent = 'Total: ' + this.totalSales();
+    sumLi.setAttribute('id','sum');
     ul.appendChild(sumLi);
 
     locationSales.appendChild(ul);
   }
 };
 
-tokyo.render();
+
 
 var dubai = {
   maxCustomer: 38,
@@ -178,15 +178,15 @@ var dubai = {
       ul.appendChild(item);
     });
     var sumLi = document.createElement('li');
-    var sumText = document.createTextNode('Total: ' + this.totalSales());
-    sumLi.appendChild(sumText);
+    sumLi.textContent = 'Total: ' + this.totalSales();
+    sumLi.setAttribute('id','sum');
     ul.appendChild(sumLi);
 
     locationSales.appendChild(ul);
   }
 };
 
-dubai.render();
+
 
 
 var paris = {
@@ -223,7 +223,7 @@ var paris = {
     var locationSales = document.getElementById('locationSales');    
     var ul = document.createElement('ul');
     var h2 = document.createElement('h2');
-
+    
     h2.appendChild(document.createTextNode('Paris'));
     ul.appendChild(h2);
 
@@ -234,17 +234,18 @@ var paris = {
       ul.appendChild(item);
     });
     var sumLi = document.createElement('li');
-    var sumText = document.createTextNode('Total: ' + this.totalSales());
-    sumLi.appendChild(sumText);
+    sumLi.textContent = 'Total: ' + this.totalSales();
+    sumLi.setAttribute('id','sum');
     ul.appendChild(sumLi);
     locationSales.appendChild(ul);
   }
 };
 
-paris.render();
+
 
 
 var lima = {
+  location: 'Lima',
   maxCustomer: 16,
   minCustomer: 2,
   averageCookie: 4.6,
@@ -257,7 +258,7 @@ var lima = {
   genSalesHour: function(){
     var sales = this.custPerHour() * this.averageCookie;
     sales = Math.floor(sales);
-    this.salesByHour.push(sales);    
+    this.salesByHour.push(sales);
     return sales;
   },
 
@@ -279,8 +280,7 @@ var lima = {
     var locationSales = document.getElementById('locationSales');
     var ul = document.createElement('ul');
     var h2 = document.createElement('h2');
-
-    h2.appendChild(document.createTextNode('Lima'));
+    h2.textContent = this.location;
     ul.appendChild(h2);
 
     listItems.forEach(element => {
@@ -290,8 +290,9 @@ var lima = {
       ul.appendChild(item);
     });
     var sumLi = document.createElement('li');
-    var sumText = document.createTextNode('Total: ' + this.totalSales());
-    sumLi.appendChild(sumText);
+    sumLi.textContent = 'Total: ' + this.totalSales();
+    sumLi.setAttribute('id','sum');
+    
     ul.appendChild(sumLi);
     locationSales.appendChild(ul);
   }
@@ -299,7 +300,13 @@ var lima = {
 
 };
 
-lima.render();
+document.addEventListener('DOMContentLoaded', function(){
+  seattle.render();
+  tokyo.render();
+  paris.render();
+  dubai.render();
+  lima.render();
+});
 
 
 

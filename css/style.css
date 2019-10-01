@@ -16,11 +16,15 @@ img{
 h2{
   font-family: 'Yeseva One', cursive;
   color: rgb(8, 77, 8);
+  text-align: center;
 }
 
 ul{
   float: left;  
   margin: auto;
+}
+#sum{
+  font-family: 'Yeseva One', cursive;
 }
 
 li{
