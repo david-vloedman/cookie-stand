@@ -78,6 +78,8 @@ var storeFactory = (storeName, maxCustomers, minCustomers, avgCookies) => {
   stores.push(store);
 };
 
+
+
 // ********************************************************************************************
 //
 //    End
@@ -122,8 +124,6 @@ Store.prototype.renderTblFooter = function(){
   footer.setAttribute('id','tblFooter');
   return footer;
 };
-
-
 
 Store.prototype.renderLocationCell = function(){
   var cell = document.createElement('td');
@@ -180,6 +180,7 @@ document.addEventListener('DOMContentLoaded', function(){
   appendTotals();
 
 });
+
 
 
 
