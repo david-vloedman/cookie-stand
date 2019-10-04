@@ -1,5 +1,11 @@
 'use strict';
 
+// ********************************************************************************************
+//
+//      Begin
+//  Global Variables
+//
+// ********************************************************************************************
 var hours = [
   ['6am', 0],
   ['7am', 0],
@@ -17,14 +23,74 @@ var hours = [
   ['7pm', 0],
 ];
 
+var stores = [];
+
 var totalOfTotals = 0;
 
 var salesTable = document.getElementById('salesTable');
+// ********************************************************************************************
+//
+//      End
+//  Global Variables
+//
+// ********************************************************************************************
+//
+//   Begin
+//  Global Functions
+//
+// ********************************************************************************************
+var renderTableHeader = () => {
+  var header = document.createElement('tr');
+  header.setAttribute('id', 'header');
+  header.appendChild(document.createElement('th'));
+  hours.forEach(hour => {
+    var cell = document.createElement('th');
+    cell.textContent = hour[0];
+    header.appendChild(cell);
+  });
+  var totalHeader = document.createElement('th');
+  totalHeader.textContent = 'Daily Location Sales';
+  header.appendChild(totalHeader);
+  return header;
+};
+
+var appendTotals = () => {
+  var row = document.createElement('tr');
+  var firstCol = document.createElement('td');
+  var grandTotal = document.createElement('td');
+  grandTotal.textContent = totalOfTotals;
+  console.log(firstCol);
+  firstCol.textContent = 'Totals';
+  row.appendChild(firstCol);
+
+  hours.forEach(element => {
+    var cell = document.createElement('td');
+    cell.textContent = element[1];
+    row.appendChild(cell);
+  });
+  row.appendChild(grandTotal);
+
+  salesTable.appendChild(row);
+};
+
+var storeFactory = (storeName, maxCustomers, minCustomers, avgCookies) => {
+  var store = new Store(storeName, maxCustomers, minCustomers, avgCookies);
+  stores.push(store);
+};
 
 
+
+// ********************************************************************************************
 //
-// Store & Associates
+//    End
+//  Global Functions
 //
+// ********************************************************************************************
+//
+//      Begin
+//  Store & Associates
+//
+// ********************************************************************************************
 var Store = function(location, maxCustomer, minCustomer, avgCookie){
   this.location = location;
   this.maxCustomer = maxCustomer;
@@ -59,8 +125,6 @@ Store.prototype.renderTblFooter = function(){
   return footer;
 };
 
-
-
 Store.prototype.renderLocationCell = function(){
   var cell = document.createElement('td');
   cell.textContent = this.location;
@@ -88,59 +152,34 @@ Store.prototype.renderSalesRow = function(){
 Store.prototype.renderStoreData = function(){
   salesTable.appendChild(this.renderSalesRow());
 };
-
-function renderTableHeader(){
-  var header = document.createElement('tr');
-  header.setAttribute('id', 'header');
-  header.appendChild(document.createElement('th'));
-  hours.forEach(hour => {
-    var cell = document.createElement('th');
-    cell.textContent = hour[0];
-    header.appendChild(cell);
-  });
-  var totalHeader = document.createElement('th');
-  totalHeader.textContent = 'Daily Location Sales';
-  header.appendChild(totalHeader);
-  return header;
-}
-
-var appendTotals = () => {
-  var row = document.createElement('tr');
-  var firstCol = document.createElement('td');
-  var grandTotal = document.createElement('td');
-  grandTotal.textContent = totalOfTotals;
-  console.log(firstCol);
-  firstCol.textContent = 'Totals';
-  row.appendChild(firstCol);
-
-  hours.forEach(element => {
-    var cell = document.createElement('td');
-    cell.textContent = element[1];
-    row.appendChild(cell);
-  });
-  row.appendChild(grandTotal);
-
-  salesTable.appendChild(row);
-};
-
+// ********************************************************************************************
+//
+//    End
+//  Store & Associates
+//
+// ********************************************************************************************
+//
+//    Begin
+//  Executing Code
+//
+// ********************************************************************************************
 document.addEventListener('DOMContentLoaded', function(){
   salesTable.appendChild(renderTableHeader());
-  var seattle = new Store('Seattle', 65, 23, 6.3);
-  var tokyo = new Store('Tokyo', 24, 3, 1.2);
-  var paris = new Store('Paris', 38, 20, 2.3);
-  var dubai = new Store('Dubai', 38, 11, 3.7);
-  var lima = new Store('Lima', 16, 2, 4.6);
 
-  seattle.renderStoreData();
-  seattle.renderStoreData();
-  tokyo.renderStoreData();
-  paris.renderStoreData();
-  dubai.renderStoreData();
-  lima.renderStoreData();
+  storeFactory('Seattle', 65, 23, 6.3);
+  storeFactory('Tokyo', 24, 3, 1.2);
+  storeFactory('Paris', 38, 20, 2.3);
+  storeFactory('Dubai', 38, 11, 3.7);
+  storeFactory('Lima', 16, 2, 4.6);
 
-  console.log(appendTotals());
+  stores.forEach(store => {
+    store.renderSalesRow();
+    store.renderStoreData();
+  });
+
+  appendTotals();
+
 });
-
 
 
 
