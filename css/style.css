@@ -1,0 +1,51 @@
+body{
+  background-color: darksalmon;
+}
+main{
+  margin-top:5em;
+  margin-left: 10%;
+  margin-right: 10%;
+  color:#053a05;
+}
+
+h1{
+  display:block;
+  font-size:4em;
+  float:right;
+
+
+}
+
+h2{
+  font-size: 2em;
+}
+
+h3{
+  font-size:2em;
+}
+
+p{
+  font-size: 25px:
+}
+
+#location{
+  font-size:20px;
+  text-align:center;
+}
+
+#hours{
+  font-size: 20px;
+}
+
+#contact{
+  text-align:center;
+  font-size:20px;
+}
+
+#sales{
+  text-align:center;
+}
+
+#gallery{
+  text-align:center;
+}

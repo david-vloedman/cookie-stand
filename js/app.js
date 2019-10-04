@@ -1,5 +1,4 @@
 'use strict';
-
 // ********************************************************************************************
 //
 //      Begin
@@ -58,7 +57,7 @@ var appendTotals = () => {
   var row = document.createElement('tr');
   var firstCol = document.createElement('td');
   var grandTotal = document.createElement('td');
-  grandTotal.textContent = totalOfTotals;  
+  grandTotal.textContent = totalOfTotals;
   firstCol.textContent = 'Totals';
   row.appendChild(firstCol);
 
@@ -71,6 +70,36 @@ var appendTotals = () => {
 
   salesTable.appendChild(row);
 };
+
+function start(){
+  addStore('Seattle', 65, 23, 6.3);
+  addStore('Tokyo', 24, 3, 1.2);
+  addStore('Paris', 38, 20, 2.3);
+  addStore('Dubai', 38, 11, 3.7);
+  addStore('Lima', 16, 2, 4.6);
+  renderTable();
+}
+
+
+
+function formSubmit(){
+  var location = document.getElementById('store').value;
+  var maxCustomers = document.getElementById('maxCust').value;
+  var minCustomers = document.getElementById('minCust').value;
+  var avgCookie = document.getElementById('avgCookie').value;
+  addStore(location, maxCustomers, minCustomers, avgCookie);
+  renderTable();
+}
+
+function renderTable(){
+  salesTable.innerHTML = '';
+  salesTable.appendChild(renderTableHeader());
+  stores.forEach(store => {
+    store.renderStoreData();
+  });
+
+  appendTotals();
+}
 
 var addStore = (storeName, maxCustomers, minCustomers, avgCookies) => {
   var store = new Store(storeName, maxCustomers, minCustomers, avgCookies);
@@ -96,14 +125,14 @@ var Store = function(location, maxCustomer, minCustomer, avgCookie){
   this.minCustomer = minCustomer;
   this.avgCookie = avgCookie;
   this.totalSales = 0;
-  
+
 
 };
 
 Store.prototype.customerCnt = function(){
   console.log(this.minCustomer);
   var customers = Math.floor(Math.random() * (this.maxCustomer - this.minCustomer + 1) + this.minCustomer);
-  
+
   return customers;
 };
 
@@ -165,36 +194,8 @@ Store.prototype.renderStoreData = function(){
 //  Executing Code
 //
 // ********************************************************************************************
-function start(){  
-  addStore('Seattle', 65, 23, 6.3);
-  addStore('Tokyo', 24, 3, 1.2);
-  addStore('Paris', 38, 20, 2.3);
-  addStore('Dubai', 38, 11, 3.7);
-  addStore('Lima', 16, 2, 4.6);
-  renderTable();  
-}
 
 
-
-function formSubmit(){  
-  var location = document.getElementById('store').value;
-  var maxCustomers = document.getElementById('maxCust').value;
-  var minCustomers = document.getElementById('minCust').value;
-  var avgCookie = document.getElementById('avgCookie').value;
-  addStore(location, maxCustomers, minCustomers, avgCookie);  
-  renderTable();  
-}
-
-function renderTable(){
-  salesTable.innerHTML = '';
-  salesTable.appendChild(renderTableHeader());
-  stores.forEach(store => {    
-    store.renderStoreData();
-  });
-
-  appendTotals();
-
-};
 
 
 document.addEventListener('submit', function(e){
