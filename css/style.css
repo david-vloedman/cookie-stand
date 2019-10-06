@@ -1,19 +1,29 @@
 body{
-  background-color: darksalmon;
+  background-color: rgb(136, 67, 44);
 }
 main{
-  margin-top:5em;
-  margin-left: 10%;
   margin-right: 10%;
-  color:#053a05;
+  margin-left: 10%;
+  color:#533805;
+  background-color: #f0cabff5;
 }
 
 h1{
   display:block;
   font-size:4em;
   float:right;
+  
+}
 
+h1, h2, h3{
+  font-family: 'Patrick Hand', cursive;
+  color: rgb(28, 92, 12);
+}
 
+#titleRow{
+  margin: 30px;
+  padding-top: 20px;
+  
 }
 
 h2{
@@ -25,7 +35,7 @@ h3{
 }
 
 p{
-  font-size: 25px:
+  font-size: 25px;
 }
 
 #location{
@@ -48,4 +58,40 @@ p{
 
 #gallery{
   text-align:center;
+}
+
+table{
+  font-family: Arial, Helvetica, sans-serif;
+  margin:auto;
+  background-color: rgb(46, 43, 43);
+  color: rgb(197, 140, 140);
+}
+
+#locationSales{
+  text-align: center;
+  margin: auto;
+}
+
+#tableTlt{
+  
+  display: block-inline;
+  float:left;
+  margin-left: 40px;
+}
+
+form{
+  width: fit-content;
+  margin: auto;
+  margin-bottom: 30px;
+}
+
+#quotes{
+  
+  overflow: auto;
+  width: 100%;
+}
+blockquote{
+  margin: 5px;
+  width: 250px;
+  float: left;
 }
