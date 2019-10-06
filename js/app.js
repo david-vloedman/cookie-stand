@@ -129,7 +129,8 @@ var Store = function(location, maxCustomer, minCustomer, avgCookie){
 
 };
 
-Store.prototype.customerCnt = function(){  
+Store.prototype.customerCnt = function(){
+  console.log(this.minCustomer);
   var customers = Math.floor(Math.random() * (this.maxCustomer - this.minCustomer + 1) + this.minCustomer);
 
   return customers;
