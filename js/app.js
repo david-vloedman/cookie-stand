@@ -2,10 +2,10 @@
 // ********************************************************************************************
 //
 //      Begin
-//  Global Variables
+//  Global letiables
 //
 // ********************************************************************************************
-var hours = [
+let hours = [
   ['6am', 0],
   ['7am', 0],
   ['8am', 0],
@@ -22,15 +22,15 @@ var hours = [
   ['7pm', 0],
 ];
 
-var stores = [];
+let stores = [];
 
-var totalOfTotals = 0;
+let totalOfTotals = 0;
 
-var salesTable = document.getElementById('salesTable');
+let salesTable = $('#salesTable');
 // ********************************************************************************************
 //
 //      End
-//  Global Variables
+//  Global letiables
 //
 // ********************************************************************************************
 //
@@ -38,40 +38,40 @@ var salesTable = document.getElementById('salesTable');
 //  Global Functions
 //
 // ********************************************************************************************
-var renderTableHeader = () => {
-  var header = document.createElement('tr');
-  header.setAttribute('id', 'header');
-  header.appendChild(document.createElement('th'));
+let renderTableHeader = () => {
+  let $header = $('<tr></tr');
+  $header.attr('id', 'header');
+  $header.append($('<th></th'));
   hours.forEach(hour => {
-    var cell = document.createElement('th');
-    cell.textContent = hour[0];
-    header.appendChild(cell);
+    let $cell = $('<th></th>');
+    $cell.text(hour[0]);
+    $header.append($cell);
   });
-  var totalHeader = document.createElement('th');
-  totalHeader.textContent = 'Daily Location Sales';
-  header.appendChild(totalHeader);
-  return header;
+  let $totalHeader = $('<th></th>');
+  $totalHeader.text('Daily Location Sales');
+  $header.append($totalHeader);
+  return $header;
 };
 
-var appendTotals = () => {
-  var row = document.createElement('tr');
-  var firstCol = document.createElement('td');
-  var grandTotal = document.createElement('td');
-  grandTotal.textContent = totalOfTotals;
-  firstCol.textContent = 'Totals';
-  row.appendChild(firstCol);
+let appendTotals = () => {
+  let $row = $('<tr></tr');
+  let $firstCol = $('<td></td>');
+  let $grandTotal = $('<td></td>');
+  $grandTotal.text(totalOfTotals);
+  $firstCol.text('Totals');
+  $row.append($firstCol);
 
-  hours.forEach(element => {
-    var cell = document.createElement('td');
-    cell.textContent = element[1];
-    row.appendChild(cell);
+  hours.forEach(hour => {
+    let $cell = $('<td></td.');
+    $cell.text(hour[1]);
+    $row.append($cell);
   });
-  row.appendChild(grandTotal);
+  $row.append($grandTotal);
 
-  salesTable.appendChild(row);
+  salesTable.append($row);
 };
 
-function start(){
+function start() {
   addStore('Seattle', 65, 23, 6.3);
   addStore('Tokyo', 24, 3, 1.2);
   addStore('Paris', 38, 20, 2.3);
@@ -82,18 +82,18 @@ function start(){
 
 
 
-function formSubmit(){
-  var location = document.getElementById('store').value;
-  var maxCustomers = document.getElementById('maxCust').value;
-  var minCustomers = document.getElementById('minCust').value;
-  var avgCookie = document.getElementById('avgCookie').value;
+function formSubmit() {
+  let location = $('#store').val();
+  let maxCustomers = $('#maxCust').val();
+  let minCustomers = $('#minCust').val();
+  let avgCookie = $('#avgCookie').val();
   addStore(location, maxCustomers, minCustomers, avgCookie);
   renderTable();
 }
 
-function renderTable(){
-  salesTable.innerHTML = '';
-  salesTable.appendChild(renderTableHeader());
+function renderTable() {
+  salesTable.text('');
+  salesTable.append(renderTableHeader());
   stores.forEach(store => {
     store.renderStoreData();
   });
@@ -101,8 +101,8 @@ function renderTable(){
   appendTotals();
 }
 
-var addStore = (storeName, maxCustomers, minCustomers, avgCookies) => {
-  var store = new Store(storeName, maxCustomers, minCustomers, avgCookies);
+let addStore = (storeName, maxCustomers, minCustomers, avgCookies) => {
+  let store = new Store(storeName, maxCustomers, minCustomers, avgCookies);
   stores.push(store);
 };
 
@@ -119,7 +119,7 @@ var addStore = (storeName, maxCustomers, minCustomers, avgCookies) => {
 //  Store & Associates
 //
 // ********************************************************************************************
-var Store = function(location, maxCustomer, minCustomer, avgCookie){
+let Store = function (location, maxCustomer, minCustomer, avgCookie) {
   this.location = location;
   this.maxCustomer = maxCustomer;
   this.minCustomer = minCustomer;
@@ -129,59 +129,58 @@ var Store = function(location, maxCustomer, minCustomer, avgCookie){
 
 };
 
-Store.prototype.customerCnt = function(){
-  console.log(this.minCustomer);
-  var customers = Math.floor((Math.random() * (this.maxCustomer - this.minCustomer + 1)) + this.minCustomer);
+Store.prototype.customerCnt = function () {
+  let customers = Math.floor((Math.random() * (this.maxCustomer - this.minCustomer + 1)) + this.minCustomer);
 
   return customers;
 };
 
-Store.prototype.genSalesHour = function(){
-  var sales = this.customerCnt() * this.avgCookie;
+Store.prototype.genSalesHour = function () {
+  let sales = this.customerCnt() * this.avgCookie;
   sales = Math.ceil(sales);
   return sales;
 };
 
-Store.prototype.totalSales = function(){
-  var sum = 0;
+Store.prototype.totalSales = function () {
+  let sum = 0;
   this.salesByHour.forEach(element => {
     sum += element;
   });
   return sum;
 };
 
-Store.prototype.renderTblFooter = function(){
-  var footer = document.createElement('tr');
-  footer.setAttribute('id','tblFooter');
-  return footer;
+Store.prototype.renderTblFooter = function () {
+  let $footer = $('<tr></tr>');
+  f$ooter.attr('id', 'tblFooter');
+  return $footer;
 };
 
-Store.prototype.renderLocationCell = function(){
-  var cell = document.createElement('td');
-  cell.textContent = this.location;
-  return cell;
+Store.prototype.renderLocationCell = function () {
+  let $cell = $('<td></td>');
+  $cell.text(this.location);
+  return $cell;
 };
 
-Store.prototype.renderSalesRow = function(){
-  var salesRow = document.createElement('tr');
-  salesRow.appendChild(this.renderLocationCell());
+Store.prototype.renderSalesRow = function () {
+  let $salesRow = $('<tr></tr>');
+  $salesRow.append(this.renderLocationCell());
   hours.forEach(element => {
-    var cell = document.createElement('td');
-    var salesHr = this.genSalesHour();
+    let $cell = $('<td></td>');
+    let salesHr = this.genSalesHour();
     element[1] += salesHr;
     this.totalSales += salesHr;
-    cell.textContent = salesHr;
-    salesRow.appendChild(cell);
+    $cell.text(salesHr);
+    $salesRow.append($cell);
   });
-  var totalCell = document.createElement('td');
-  totalCell.textContent = this.totalSales;
+  let $totalCell = $('<td></td>');
+  $totalCell.text(this.totalSales);
   totalOfTotals += this.totalSales;
-  salesRow.appendChild(totalCell);
-  return salesRow;
+  $salesRow.append($totalCell);
+  return $salesRow;
 };
 
-Store.prototype.renderStoreData = function(){
-  salesTable.appendChild(this.renderSalesRow());
+Store.prototype.renderStoreData = function () {
+  salesTable.append(this.renderSalesRow());
 };
 // ********************************************************************************************
 //
@@ -198,13 +197,8 @@ Store.prototype.renderStoreData = function(){
 
 
 
-document.addEventListener('submit', function(e){
+document.addEventListener('submit', function (e) {
   e.preventDefault();
   formSubmit();
 });
 start();
-
-
-
-
-
