@@ -1,97 +1,15 @@
-/* body{
-  background-color: rgb(136, 67, 44);
-}
-main{
-  margin-right: 10%;
-  margin-left: 10%;
-  color:#533805;
-  background-color: #f0cabff5;
+@import url('https://fonts.googleapis.com/css?family=Vibes&display=swap');
+
+h1 {
+  font-family: 'Vibes',
+    cursive;
 }
 
-h1{
-  display:block;
-  font-size:4em;
-  float:right;
-  
+body {
+  background-color: gray;
 }
 
-h1, h2, h3{
-  font-family: 'Patrick Hand', cursive;
-  color: rgb(28, 92, 12);
+main {
+  background-color: rgb(209, 221, 255);
+  color: rgb(63, 0, 63);
 }
-
-#titleRow{
-  margin: 30px;
-  padding-top: 20px;
-  
-}
-
-h2{
-  font-size: 2em;
-}
-
-h3{
-  font-size:2em;
-}
-
-p{
-  font-size: 25px;
-}
-
-#location{
-  font-size:20px;
-  text-align:center;
-}
-
-#hours{
-  font-size: 20px;
-}
-
-#contact{
-  text-align:center;
-  font-size:20px;
-}
-
-#sales{
-  text-align:center;
-}
-
-#gallery{
-  text-align:center;
-}
-
-table{
-  font-family: Arial, Helvetica, sans-serif;
-  margin:auto;
-  background-color: rgb(46, 43, 43);
-  color: rgb(197, 140, 140);
-}
-
-#locationSales{
-  text-align: center;
-  margin: auto;
-}
-
-#tableTlt{
-  
-  display: block-inline;
-  float:left;
-  margin-left: 40px;
-}
-
-form{
-  width: fit-content;
-  margin: auto;
-  margin-bottom: 30px;
-}
-
-#quotes{
-  
-  overflow: auto;
-  width: 100%;
-}
-blockquote{
-  margin: 5px;
-  width: 250px;
-  float: left;
-} */
