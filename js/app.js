@@ -78,6 +78,8 @@ function start() {
   addStore('Dubai', 38, 11, 3.7);
   addStore('Lima', 16, 2, 4.6);
   renderTable();
+  new TotalChart('bar').render();
+  new TotalChart('pie').render();
 }
 
 
@@ -157,6 +159,7 @@ Store.prototype.renderTblFooter = function () {
 
 Store.prototype.renderLocationCell = function () {
   let $cell = $('<td></td>');
+  $cell.attr('class', 'locations');
   $cell.text(this.location);
   return $cell;
 };
@@ -173,6 +176,7 @@ Store.prototype.renderSalesRow = function () {
     $salesRow.append($cell);
   });
   let $totalCell = $('<td></td>');
+  $totalCell.attr('class', 'totals');
   $totalCell.text(this.totalSales);
   totalOfTotals += this.totalSales;
   $salesRow.append($totalCell);
@@ -187,6 +191,67 @@ Store.prototype.renderStoreData = function () {
 //    End
 //  Store & Associates
 //
+// ********************************************************************************************
+// ********************************************************************************************
+//
+//    Begin
+//  Charting
+//
+// ********************************************************************************************
+
+const chartManager = {
+
+  getLabels: () => {
+    const labels = [];
+    $('.locations').each((i, location) => {
+      labels.push($(location).html());
+    });
+    return labels;
+  },
+
+  getData: () => {
+    const data = [];
+    $('.totals').each((i, total) => {
+      data.push($(total).html());
+    });
+    return data;
+  },
+
+  getColors: count => {
+    return randomColor({
+      count: count
+    });
+  }
+}
+
+function TotalChart(chartType) {
+  this.type = chartType;
+  this.canvas = $('<canvas></canvas');
+  this.labels = chartManager.getLabels();
+  this.data = chartManager.getData();
+  this.colors = chartManager.getColors(this.data.length);
+}
+
+TotalChart.prototype.render = function () {
+  $('main').append(this.canvas);
+  new Chart(this.canvas, {
+    type: this.type,
+    data: {
+      labels: this.labels,
+      datasets: [{
+        label: 'Number of Sales',
+        data: this.data,
+        backgroundColor: this.colors
+      }]
+    }
+
+  })
+}
+
+
+
+
+
 // ********************************************************************************************
 //
 //    Begin
