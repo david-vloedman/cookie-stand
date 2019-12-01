@@ -1,10 +1,12 @@
 'use strict';
+
 // ********************************************************************************************
 //
 //      Begin
 //  Global letiables
 //
 // ********************************************************************************************
+
 let hours = [
   ['6am', 0],
   ['7am', 0],
@@ -27,6 +29,7 @@ let stores = [];
 let totalOfTotals = 0;
 
 let salesTable = $('#salesTable');
+
 // ********************************************************************************************
 //
 //      End
@@ -38,6 +41,7 @@ let salesTable = $('#salesTable');
 //  Global Functions
 //
 // ********************************************************************************************
+
 let renderTableHeader = () => {
   let $header = $('<tr></tr');
   $header.attr('id', 'header');
@@ -48,7 +52,7 @@ let renderTableHeader = () => {
     $header.append($cell);
   });
   let $totalHeader = $('<th></th>');
-  $totalHeader.text('Daily Location Sales');
+  $totalHeader.text('Total');
   $header.append($totalHeader);
   return $header;
 };
@@ -108,8 +112,6 @@ let addStore = (storeName, maxCustomers, minCustomers, avgCookies) => {
   stores.push(store);
 };
 
-
-
 // ********************************************************************************************
 //
 //    End
@@ -121,6 +123,7 @@ let addStore = (storeName, maxCustomers, minCustomers, avgCookies) => {
 //  Store & Associates
 //
 // ********************************************************************************************
+
 let Store = function (location, maxCustomer, minCustomer, avgCookie) {
   this.location = location;
   this.maxCustomer = maxCustomer;
@@ -233,7 +236,8 @@ function TotalChart(chartType) {
 }
 
 TotalChart.prototype.render = function () {
-  $('main').append(this.canvas);
+  $('#chart').append(this.canvas);
+  $(this.canvas).attr('id', this.type);
   new Chart(this.canvas, {
     type: this.type,
     data: {
@@ -262,8 +266,10 @@ TotalChart.prototype.render = function () {
 
 
 
-document.addEventListener('submit', function (e) {
+$('#newStore').on('click', function () {
   e.preventDefault();
   formSubmit();
 });
+
+
 start();

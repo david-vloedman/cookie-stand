@@ -2,7 +2,6 @@ main {
   display: grid;
   grid-template-rows: auto auto auto auto auto;
   text-align: center;
-  height: 100%;
 }
 
 #header {

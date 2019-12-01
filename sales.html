@@ -9,32 +9,42 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.5.4/randomColor.js"></script>
+
+  <link rel="stylesheet" href="css/salesBase.css">
   <title>Location Sales</title>
 </head>
 
 <body>
   <main>
+
+
     <article id="locationSales">
-      <h1 id="tableTlt">Sales by Location</h1>
+      <h1>Sales by Location</h1>
       <table id="salesTable">
       </table>
       <br><br><br>
       <form id="submitStoreData">
         <legend>Submit New Store Data:</legend><br>
         <fieldset>
-          <label for="store">Store Location:</label>
+          <label for="store">Store Location:</label><br>
           <input type="text" name="store" id="store" /><br>
           <label for="maxCust">Maximum Customer Per Hour:</label>
           <input type="text" name="maxCust" id="maxCust" /><br>
           <label for="minCust">Minimum Customer Per Hour:</label>
           <input type="text" name="minCust" id="minCust" /><br>
           <label for="avgCookie">Average Cookies per Customer:</label>
-          <input type="text" name="avgCookie" id="avgCookie" /><br><br>
+          <input type="text" name="avgCookie" id="avgCookie" /><br>
+          <input type="submit" id="newStore" value="Submit" />
         </fieldset>
-        <input type="submit" value="Submit" /><br>
       </form>
+      <br>
+
     </article>
 
+
+    <div id="chart">
+
+    </div>
 
   </main>
 </body>
