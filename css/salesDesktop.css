@@ -1,0 +1,19 @@
+main {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  grid-template-columns: auto;
+  text-align: center;
+}
+
+table {
+  display: initial;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+canvas {
+  max-width: 750px;
+  max-height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
